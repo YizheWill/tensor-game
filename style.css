@@ -88,7 +88,6 @@ body {
   z-index: 20;
   margin-bottom: 30px;
   max-width: 640px;
-  max-height: 480px;
   margin-left: 30px;
   margin-right: 30px;
 }
@@ -108,7 +107,7 @@ canvas {
   height: 480px;
   width: 640px;
   border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .container {
@@ -138,9 +137,8 @@ canvas {
   align-items: center;
   background-color: rgba(255, 255, 255, 0.5);
   font-family: Oswald;
-  font-size: 20px;
   width: 300px;
-  padding: 50px;
+  height: 500px;
 }
 
 #gesture-name {
@@ -150,7 +148,8 @@ canvas {
   color: #363636;
 }
 #gesture-image {
-  width: 70%;
+  /* max-width: 250px; */
+  max-height: 150px;
 }
 #results {
   display: flex;
@@ -166,6 +165,4 @@ canvas {
 #results > h1 {
   font-size: 4rem;
   font-weight: 800;
-}
-#level {
 }

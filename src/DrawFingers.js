@@ -24,6 +24,9 @@ class DrawFingers {
     };
     this.knownGestures = [fp.Gestures.VictoryGesture, fp.Gestures.ThumbsUpGesture];
     this.GE = new fp.GestureEstimator(this.knownGestures);
+    this.charArray = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    this.imageArray = this.charArray.map((char) => `./src/assets/images/${char}.png`);
+    this.currentIndex = 0;
   }
 
   async genPredicts(video) {
@@ -40,20 +43,38 @@ class DrawFingers {
   }
 
   async estimateHands() {
+    const gestureName = document.querySelector('#gesture-name');
+    const image = document.querySelector('#gesture-image');
+    const passed = document.querySelector('#passed');
+
     const predicts = await this.genPredicts(this.video);
     this.ctx.clearRect(0, 0, this.config.video.width, this.config.video.height);
     console.log('predicts', predicts, 'length', predicts.length);
     if (predicts.length > 0) {
       drawHand(predicts, this.ctx);
       const est = this.GE.estimate(predicts[0].landmarks, 7);
-      if (est.gestures?.length) {
+      if (est.gestures.length) {
         let result = est.gestures.reduce((acc, ele) =>
           acc.confidence > ele.confidence ? acc : ele
         );
-        console.log('result', result);
-        if (this.resultText.innerText !== result.name) {
-          this.resultText.innerText = result.name;
+
+        if (result.name === 'victory') {
+          this.resultText.innerText = 'V';
+          passed.style.display = 'inline';
+          setTimeout(() => {
+            passed.style.display = 'none';
+            this.currentIndex = parseInt(Math.random() * 26);
+
+            image.src = this.imageArray[this.currentIndex];
+            gestureName.innerText = this.charArray[this.currentIndex];
+          }, 3000);
+        } else if (result.name === 'thumbs_up') {
+          this.resultText.innerText = 'THUMB';
         }
+      } else {
+        setTimeout(() => {
+          this.resultText.innerText = 'INVALID';
+        }, 1000);
       }
     }
   }
