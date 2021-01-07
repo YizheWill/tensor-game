@@ -1,0 +1,27 @@
+<html>
+  <body>
+    <div id="container">
+      <video id="videoElement" width="640" height="500" style="display: none"></video>
+      <canvas id="canvasElement" width="640" height="500"></canvas>
+    </div>
+    <h1>What the fuck</h1>
+
+    <img id="mother" src="mother_1.png" style="display: none" />
+    <img id="father" src="father_1.png" style="display: none" />
+    <img id="brother" src="brother_1.png" style="display: none" />
+    <img id="sister" src="sister_1.png" style="display: none" />
+    <img id="baby" src="baby_1.png" style="display: none" />
+
+    <!--Load the Handpose model script along with its dependencies -->
+    <script src="https://unpkg.com/@tensorflow/tfjs-core@2.1.0/dist/tf-core.js"></script>
+    <script src="https://unpkg.com/@tensorflow/tfjs-converter@2.1.0/dist/tf-converter.js"></script>
+
+    <!-- You must explicitly require a TF.js backend if you're not using the tfs union bundle. -->
+    <script src="https://unpkg.com/@tensorflow/tfjs-backend-webgl@2.1.0/dist/tf-backend-webgl.js"></script>
+    <!-- Alternatively you can use the WASM backend: <script src="https://unpkg.com/@tensorflow/tfjs-backend-wasm@2.1.0/dist/tf-backend-wasm.js"></script> -->
+
+    <script src="https://unpkg.com/@tensorflow-models/handpose@0.0.6/dist/handpose.js"></script>
+    <!--Load the custom script used for this example -->
+    <script src="index.js"></script>
+  </body>
+</html>

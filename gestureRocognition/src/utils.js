@@ -6,14 +6,11 @@ const fingerJoints = {
   pinky: [0, 17, 18, 19, 20],
 };
 
-
-
-
 export const drawHand = (predictions, ctx) => {
   if (predictions.length > 0) {
     predictions.forEach((prediction) => {
       const landmarks = prediction.landmarks;
- 
+
       for (const key in fingerJoints) {
         for (let i = 0; i < fingerJoints[key].length - 1; i++) {
           const firstJointIndex = fingerJoints[key][i];

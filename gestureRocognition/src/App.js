@@ -1,13 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 import * as tf from '@tensorflow/tfjs';
 import * as handpose from '@tensorflow-models/handpose';
 import Webcam from 'react-webcam';
 import { drawHand } from './utils';
+import * as fp from 'fingerpose';
 
 import './App.css';
 
 function App() {
+  const [emoji, setEmoji] = useState(null);
+  const victory = '✌';
+  const thumbsUp = '👍';
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const runHandpose = async () => {
@@ -35,6 +39,16 @@ function App() {
 
       const hand = await nnw.estimateHands(video);
       console.log(hand);
+
+      if (hand.length > 0) {
+        const GE = new fp.GestureEstimator([
+          fp.Gestures.VictoryGesture,
+          fp.Gestures.ThumbsUpGesture,
+        ]);
+        const gesture = await GE.estimate(hand[0].landmarks, 8);
+        // 8 is a confidence level
+        console.log('gesture', gesture);
+      }
 
       const ctx = canvasRef.current.getContext('2d');
       drawHand(hand, ctx);

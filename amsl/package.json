@@ -1,0 +1,33 @@
+{
+  "name": "amsl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --watch --mode=development",
+    "prod": "webpack --mode=production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "path": "^0.12.7",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1",
+    "source-map-loader": "^1.0.0"
+  },
+  "dependencies": {
+    "@tensorflow-models/handpose": "0.0.6",
+    "@tensorflow/tfjs": "^2.8.2",
+    "@tensorflow/tfjs-backend-cpu": "^2.8.2",
+    "@tensorflow/tfjs-backend-webgl": "^2.8.2",
+    "@tensorflow/tfjs-converter": "^2.8.2",
+    "@tensorflow/tfjs-core": "^2.8.2",
+    "@tensorflow/tfjs-node": "^2.8.2",
+    "fingerpose": "0.0.2",
+    "image-pixels": "^2.2.2",
+    "typescript": "^4.1.3"
+  }
+}
