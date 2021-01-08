@@ -22,7 +22,10 @@
       </p>
       <div id="next">ok</div>
     </div>
-    <div class="navbar"><h2>LEARN SIGN LANGUAGE</h2></div>
+    <div class="navbar">
+      <h2>LEARN SIGN LANGUAGE</h2>
+      <div style="position: absolute; right: 100px" id="cameraToggle">camera</div>
+    </div>
     <div id="core">
       <div id="instructions">
         <h2 style="margin-top: 2rem">Try pose the gesture below</h2>
@@ -33,7 +36,7 @@
           style="margin-top: -2rem"
         />
       </div>
-      <div class="container">
+      <div id="container">
         <video autoplay="true" id="webcam"></video>
         <canvas id="video-canvas"></canvas>
         <div class="floating-text">
@@ -46,6 +49,7 @@
         <h3 id="passed" style="color: red">Try Again</h3>
       </div>
     </div>
+    <div id="nextGesture"><h3>NEXT</h3></div>
 
     <script src="https://unpkg.com/@tensorflow/tfjs-core@2.1.0/dist/tf-core.js"></script>
     <script src="https://unpkg.com/@tensorflow/tfjs-converter@2.1.0/dist/tf-converter.js"></script>

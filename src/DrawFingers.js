@@ -71,6 +71,13 @@ class DrawFingers {
     const gestureName = document.querySelector('#gesture-name');
     const image = document.querySelector('#gesture-image');
     const passed = document.querySelector('#passed');
+    const nextButton = document.querySelector('#nextGesture');
+    nextButton.addEventListener('click', () => {
+      this.currentIndex = parseInt(Math.random() * 9);
+      gestureName.innerText = this.charArray[this.currentIndex].toUpperCase();
+      image.src = this.imageArray[this.currentIndex];
+      passed.innerText = ' ';
+    });
 
     function sleep(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
