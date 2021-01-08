@@ -49,7 +49,7 @@ class DrawFingers {
       FGesture,
     ];
     this.GE = new fp.GestureEstimator(this.knownGestures);
-    this.charArray = 'ABDEFGWYV'.split('');
+    this.charArray = 'abdefgwyv'.split('');
     this.imageArray = this.charArray.map((char) => `./src/assets/images/${char}.png`);
     this.currentIndex = 0;
   }
