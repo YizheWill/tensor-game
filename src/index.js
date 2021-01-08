@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         setInterval(() => {
           drawFingers.draw();
-        }, 1000);
+        }, 2000);
       }, 1000);
     });
   });

@@ -1,4 +1,15 @@
 import { drawHand } from './drawHand';
+import {
+  AGesture,
+  BGesture,
+  YGesture,
+  EGesture,
+  WGesture,
+  VGesture,
+  DGesture,
+  GGesture,
+  LoveGesture,
+} from './A';
 class DrawFingers {
   constructor(width, height, fps, ctx, video, resultText) {
     this.width = width;
@@ -22,7 +33,19 @@ class DrawFingers {
       thumbs_up: 'ThumbUp',
       victory: 'Victory',
     };
-    this.knownGestures = [fp.Gestures.VictoryGesture, fp.Gestures.ThumbsUpGesture];
+    this.knownGestures = [
+      // fp.Gestures.VictoryGesture,
+      fp.Gestures.ThumbsUpGesture,
+      AGesture,
+      BGesture,
+      YGesture,
+      EGesture,
+      WGesture,
+      VGesture,
+      DGesture,
+      GGesture,
+      LoveGesture,
+    ];
     this.GE = new fp.GestureEstimator(this.knownGestures);
     this.charArray = 'abcdefghijklmnopqrstuvwxyz'.split('');
     this.imageArray = this.charArray.map((char) => `./src/assets/images/${char}.png`);
@@ -52,13 +75,13 @@ class DrawFingers {
     console.log('predicts', predicts, 'length', predicts.length);
     if (predicts.length > 0) {
       drawHand(predicts, this.ctx);
-      const est = this.GE.estimate(predicts[0].landmarks, 7);
+      const est = this.GE.estimate(predicts[0].landmarks, 8.5);
       if (est.gestures.length) {
         let result = est.gestures.reduce((acc, ele) =>
           acc.confidence > ele.confidence ? acc : ele
         );
 
-        if (result.name === 'victory') {
+        if (result.name === 'V') {
           this.resultText.innerText = 'V';
           passed.style.display = 'inline';
           setTimeout(() => {
@@ -70,6 +93,22 @@ class DrawFingers {
           }, 3000);
         } else if (result.name === 'thumbs_up') {
           this.resultText.innerText = 'THUMB';
+        } else if (result.name === 'A') {
+          this.resultText.innerText = 'A';
+        } else if (result.name === 'Y') {
+          this.resultText.innerText = 'Y';
+        } else if (result.name === 'B') {
+          this.resultText.innerText = 'B';
+        } else if (result.name === 'E') {
+          this.resultText.innerText = 'E';
+        } else if (result.name === 'W') {
+          this.resultText.innerText = 'W';
+        } else if (result.name === 'G') {
+          this.resultText.innerText = 'G';
+        } else if (result.name === 'D') {
+          this.resultText.innerText = 'D';
+        } else if (result.name === 'ily') {
+          this.resultText.innerText = 'Love You!';
         }
       } else {
         setTimeout(() => {
