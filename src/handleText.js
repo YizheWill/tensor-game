@@ -1,6 +1,6 @@
 let i = 0;
 let text =
-  'Because of the pandemic, we have to stay 6 feet or more from each other. Even that distance might not be enough. But we need to communicate, we need to "talk" somehow. Let\'s learn a sign language. Say hello to people at parks using ASL';
+  'Because of the pandemic, we are adviced to maintain social distance and wear a mask. Covid transmits through respiratory droplets, which makes "talking" a dangerous behavior. But how to communicate? Maybe it\'s time to learn a sign lanugage!';
 
 const nextButton = document.getElementById('next');
 const policyText = document.getElementById('policy');

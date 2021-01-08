@@ -45,7 +45,8 @@ body {
   margin: 50px 100px;
   font-weight: lighter;
   font-family: Oswald;
-  font-size: 3rem;
+  font-size: 2rem;
+  line-height: 4rem;
 }
 .modal > #next {
   position: absolute;
