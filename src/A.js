@@ -81,24 +81,30 @@ VGesture.addCurl(Finger.Pinky, FingerCurl.FullCurl, 1.0);
 export const DGesture = new GestureDescription('D');
 DGesture.addCurl(Finger.Thumb, FingerCurl.FullCurl, 1.0);
 DGesture.addCurl(Finger.Index, FingerCurl.NoCurl, 1.0);
-DGesture.addDirection(Finger.Index, FingerDirection.VerticalUp, 1.0);
+// DGesture.addDirection(Finger.Index, FingerDirection.VerticalUp, 1.0);
 DGesture.addCurl(Finger.Middle, FingerCurl.FullCurl, 1.0);
 DGesture.addCurl(Finger.Ring, FingerCurl.FullCurl, 1.0);
 DGesture.addCurl(Finger.Pinky, FingerCurl.FullCurl, 1.0);
 
+export const FGesture = new GestureDescription('F');
+FGesture.addCurl(Finger.Thumb, FingerCurl.FullCurl, 1.0);
+FGesture.addCurl(Finger.Index, FingerCurl.FullCurl, 1.0);
+FGesture.addCurl(Finger.Middle, FingerCurl.NoCurl, 1.0);
+FGesture.addCurl(Finger.Ring, FingerCurl.NoCurl, 1.0);
+FGesture.addCurl(Finger.Pinky, FingerCurl.NoCurl, 1.0);
+
 export const GGesture = new GestureDescription('G');
-GGesture.addCurl(Finger.Thumb, FingerCurl.FullCurl, 1.0);
+GGesture.addCurl(Finger.Thumb, FingerCurl.NoCurl, 1.0);
 GGesture.addCurl(Finger.Index, FingerCurl.NoCurl, 1.0);
-GGesture.addDirection(Finger.Index, FingerDirection.HorizontalLeft, 1.0);
+GGesture.addDirection(Finger.Index, FingerDirection.HorizontalRight, 1.0);
 GGesture.addCurl(Finger.Middle, FingerCurl.FullCurl, 1.0);
 GGesture.addCurl(Finger.Ring, FingerCurl.FullCurl, 1.0);
 GGesture.addCurl(Finger.Pinky, FingerCurl.FullCurl, 1.0);
 
-export const LoveGesture = new GestureDescription('ily');
-LoveGesture.addCurl(Finger.Ring, FingerCurl.FullCurl, 1.0);
-LoveGesture.addDirection(Finger.Ring, FingerDirection.VerticalUp, 1.0);
-LoveGesture.addCurl(Finger.Middle, FingerCurl.FullCurl, 1.0);
-LoveGesture.addDirection(Finger.Middle, FingerDirection.VerticalUp, 1.0);
+export const LoveGesture = new GestureDescription('LOVE YOU');
 LoveGesture.addCurl(Finger.Thumb, FingerCurl.NoCurl, 1.0);
+LoveGesture.addDirection(Finger.Thumb, FingerDirection.HorizontalLeft, 1.0);
 LoveGesture.addCurl(Finger.Index, FingerCurl.NoCurl, 1.0);
 LoveGesture.addCurl(Finger.Pinkey, FingerCurl.NoCurl, 1.0);
+LoveGesture.addCurl(Finger.Ring, FingerCurl.FullCurl, 1.0);
+LoveGesture.addCurl(Finger.Middle, FingerCurl.FullCurl, 1.0);
