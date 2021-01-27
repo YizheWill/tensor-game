@@ -6,22 +6,30 @@ document.addEventListener('DOMContentLoaded', () => {
   typeWriter();
   const canvas = document.querySelector('#video-canvas');
   const ctx = canvas.getContext('2d');
-  const resultText = document.querySelector('#result-text');
-  const cameraButton = document.querySelector('#cameraToggle');
-  const container = document.querySelector('#container');
-  const results = document.querySelector('#results');
+  const resultText = document.getElementById('result-text');
+  const cameraButton = document.getElementById('cameraToggle');
+  const container = document.getElementById('container');
+  const results = document.getElementById('results');
+  let firstClick = true;
+
+  // console.log('container', container);
   canvas.width = 640;
   canvas.height = 480;
-  console.log('Canvas initialized');
   initCamera(640, 480, 30).then((video) => {
     video.play();
     video.addEventListener('loadeddata', () => {
       cameraButton.addEventListener('click', () => {
-        if (container.style.display === 'none') {
+        if (firstClick) {
+          setTimeout(() => {
+            cameraButton.click();
+            cameraButton.click();
+            firstClick = false;
+          }, 10);
+        } else if (container.style.display == 'none') {
           container.style.display = 'block';
           results.style.display = 'flex';
         } else {
-          container.style.display = 'none';
+          container.style.display = 'none'; //undefined
           results.style.display = 'none';
         }
       });

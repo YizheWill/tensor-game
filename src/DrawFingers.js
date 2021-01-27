@@ -50,14 +50,16 @@ class DrawFingers {
     ];
     this.GE = new fp.GestureEstimator(this.knownGestures);
     this.charArray = 'abdefgwyv'.split('');
-    this.imageArray = this.charArray.map((char) => `./src/assets/images/${char}.png`);
+    this.imageArray = this.charArray.map(
+      (char) => `./src/assets/images/${char}.png`
+    );
     this.currentIndex = 0;
   }
 
   async genPredicts(video) {
     const model = await handpose.load();
     const predictions = model.estimateHands(video, true);
-    console.log('HandPose Model loaded');
+    // console.log('HandPose Model loaded');
     return predictions;
   }
   drawPoint(x, y, r, color) {
@@ -84,7 +86,7 @@ class DrawFingers {
     }
     const predicts = await this.genPredicts(this.video);
     this.ctx.clearRect(0, 0, this.config.video.width, this.config.video.height);
-    console.log('predicts', predicts, 'length', predicts.length);
+    // console.log('predicts', predicts, 'length', predicts.length);
     if (predicts.length > 0) {
       drawHand(predicts, this.ctx);
       const est = this.GE.estimate(predicts[0].landmarks, 8.5);
@@ -95,10 +97,20 @@ class DrawFingers {
         this.resultText.innerText = result.name;
         if (result.name === gestureName.innerText) {
           passed.innerText = 'passed';
-          await sleep(3000);
-          this.currentIndex = parseInt(Math.random() * 9);
-          gestureName.innerText = this.charArray[this.currentIndex].toUpperCase();
+          let newIndex = parseInt(Math.random() * 9);
+
+          while (this.currentIndex === newIndex) {
+            console.log('this.currentIndex', this.currentIndex);
+            newIndex = parseInt(Math.random() * 9);
+            this.currentIndex = newIndex;
+          }
+          this.currentIndex = newIndex;
+          console.log('this.currentIndex', this.currentIndex);
+          gestureName.innerText = this.charArray[
+            this.currentIndex
+          ].toUpperCase();
           image.src = this.imageArray[this.currentIndex];
+          await sleep(2000);
           passed.innerText = ' ';
         }
       } else {
