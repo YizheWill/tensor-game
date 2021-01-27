@@ -109,6 +109,7 @@ class DrawFingers {
           gestureName.innerText = this.charArray[
             this.currentIndex
           ].toUpperCase();
+
           image.src = this.imageArray[this.currentIndex];
           await sleep(2000);
           passed.innerText = ' ';
