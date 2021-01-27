@@ -7,19 +7,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.querySelector('#video-canvas');
   const ctx = canvas.getContext('2d');
   const resultText = document.querySelector('#result-text');
+  const cameraButton = document.querySelector('#cameraToggle');
+  const container = document.querySelector('#container');
+  const results = document.querySelector('#results');
   canvas.width = 640;
   canvas.height = 480;
   console.log('Canvas initialized');
   initCamera(640, 480, 30).then((video) => {
     video.play();
     video.addEventListener('loadeddata', () => {
+      cameraButton.addEventListener('click', () => {
+        if (container.style.display === 'none') {
+          container.style.display = 'block';
+          results.style.display = 'flex';
+        } else {
+          container.style.display = 'none';
+          results.style.display = 'none';
+        }
+      });
       console.log('Camera is ready');
       let drawFingers = new DrawFingers(640, 480, 30, ctx, video, resultText);
       setTimeout(() => {
         setInterval(() => {
           drawFingers.draw();
-        }, 2000);
-      }, 1000);
+        }, 1000);
+      }, 5500);
     });
   });
 });

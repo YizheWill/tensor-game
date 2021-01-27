@@ -45,7 +45,8 @@ body {
   margin: 50px 100px;
   font-weight: lighter;
   font-family: Oswald;
-  font-size: 3rem;
+  font-size: 2rem;
+  line-height: 4rem;
 }
 .modal > #next {
   position: absolute;
@@ -110,12 +111,13 @@ canvas {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.container {
+#container {
   background-color: #363636;
   position: relative;
   height: 480px;
   width: 640px;
   border-radius: 20px;
+  display: none;
   /* border-radius: 20px; */
 }
 .floating-text {
@@ -152,7 +154,7 @@ canvas {
   max-height: 150px;
 }
 #results {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -165,4 +167,27 @@ canvas {
 #results > h1 {
   font-size: 4rem;
   font-weight: 800;
+}
+#cameraToggle {
+  border: 1px solid white;
+  padding: 10px 40px;
+  cursor: pointer;
+}
+
+#nextGesture {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  display: none;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 70px;
+  border: 2px solid black;
+  color: black;
+  z-index: 999;
+  font-family: Oswald;
+  font-weight: 800;
+  cursor: pointer;
 }

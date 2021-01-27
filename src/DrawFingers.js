@@ -9,6 +9,7 @@ import {
   DGesture,
   GGesture,
   LoveGesture,
+  FGesture,
 } from './A';
 class DrawFingers {
   constructor(width, height, fps, ctx, video, resultText) {
@@ -45,9 +46,10 @@ class DrawFingers {
       DGesture,
       GGesture,
       LoveGesture,
+      FGesture,
     ];
     this.GE = new fp.GestureEstimator(this.knownGestures);
-    this.charArray = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    this.charArray = 'abdefgwyv'.split('');
     this.imageArray = this.charArray.map((char) => `./src/assets/images/${char}.png`);
     this.currentIndex = 0;
   }
@@ -69,7 +71,17 @@ class DrawFingers {
     const gestureName = document.querySelector('#gesture-name');
     const image = document.querySelector('#gesture-image');
     const passed = document.querySelector('#passed');
+    const nextButton = document.querySelector('#nextGesture');
+    nextButton.addEventListener('click', () => {
+      this.currentIndex = parseInt(Math.random() * 9);
+      gestureName.innerText = this.charArray[this.currentIndex].toUpperCase();
+      image.src = this.imageArray[this.currentIndex];
+      passed.innerText = ' ';
+    });
 
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
     const predicts = await this.genPredicts(this.video);
     this.ctx.clearRect(0, 0, this.config.video.width, this.config.video.height);
     console.log('predicts', predicts, 'length', predicts.length);
@@ -80,40 +92,17 @@ class DrawFingers {
         let result = est.gestures.reduce((acc, ele) =>
           acc.confidence > ele.confidence ? acc : ele
         );
-
-        if (result.name === 'V') {
-          this.resultText.innerText = 'V';
-          passed.style.display = 'inline';
-          setTimeout(() => {
-            passed.style.display = 'none';
-            this.currentIndex = parseInt(Math.random() * 26);
-
-            image.src = this.imageArray[this.currentIndex];
-            gestureName.innerText = this.charArray[this.currentIndex];
-          }, 3000);
-        } else if (result.name === 'thumbs_up') {
-          this.resultText.innerText = 'THUMB';
-        } else if (result.name === 'A') {
-          this.resultText.innerText = 'A';
-        } else if (result.name === 'Y') {
-          this.resultText.innerText = 'Y';
-        } else if (result.name === 'B') {
-          this.resultText.innerText = 'B';
-        } else if (result.name === 'E') {
-          this.resultText.innerText = 'E';
-        } else if (result.name === 'W') {
-          this.resultText.innerText = 'W';
-        } else if (result.name === 'G') {
-          this.resultText.innerText = 'G';
-        } else if (result.name === 'D') {
-          this.resultText.innerText = 'D';
-        } else if (result.name === 'ily') {
-          this.resultText.innerText = 'Love You!';
+        this.resultText.innerText = result.name;
+        if (result.name === gestureName.innerText) {
+          passed.innerText = 'passed';
+          await sleep(3000);
+          this.currentIndex = parseInt(Math.random() * 9);
+          gestureName.innerText = this.charArray[this.currentIndex].toUpperCase();
+          image.src = this.imageArray[this.currentIndex];
+          passed.innerText = ' ';
         }
       } else {
-        setTimeout(() => {
-          this.resultText.innerText = 'INVALID';
-        }, 1000);
+        resultText.innerText = 'Invalid';
       }
     }
   }
