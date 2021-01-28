@@ -100,9 +100,8 @@ class DrawFingers {
           let newIndex = parseInt(Math.random() * 9);
 
           while (this.currentIndex === newIndex) {
-            console.log('this.currentIndex', this.currentIndex);
+            console.log('this.currentIndex', this.currentIndex, newIndex);
             newIndex = parseInt(Math.random() * 9);
-            this.currentIndex = newIndex;
           }
           this.currentIndex = newIndex;
           console.log('this.currentIndex', this.currentIndex);
@@ -115,7 +114,7 @@ class DrawFingers {
           passed.innerText = ' ';
         }
       } else {
-        resultText.innerText = 'Invalid';
+        this.resultText.innerText = 'Invalid';
       }
     }
   }
