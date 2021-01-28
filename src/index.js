@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(() => {
           drawFingers.draw();
         }, 1000);
-      }, 5700);
+      }, 6000);
     });
   });
 });
