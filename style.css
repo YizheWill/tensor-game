@@ -30,6 +30,32 @@ body {
   font-family: Oswald;
   font-weight: 800;
 }
+#game-modal {
+  display: none;
+}
+.game-start-modal {
+  display: flex;
+  padding-top: 5rem;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  position: absolute;
+  border-radius: 20px;
+  height: 70vh;
+  background-color: white;
+  z-index: 999;
+  top: 15vh;
+  left: 25vw;
+  width: 50vw;
+  right: 10vw;
+}
+.game-start-modal > p {
+  margin: 50px 100px;
+  font-weight: lighter;
+  font-family: Oswald;
+  font-size: 2rem;
+  line-height: 4rem;
+}
 .modal {
   position: absolute;
   border-radius: 20px;
@@ -190,4 +216,35 @@ canvas {
   font-family: Oswald;
   font-weight: 800;
   cursor: pointer;
+}
+#buttons {
+  position: absolute;
+  bottom: 70px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+#cancel-button {
+  background-color: white;
+  margin-left: 5rem;
+  height: 4rem;
+  width: 10rem;
+  border: 2px solid red;
+  color: red;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 800;
+  font-family: Oswald;
+}
+#start-button {
+  background-color: #86e188;
+  margin-right: 5rem;
+  height: 4rem;
+  width: 10rem;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 800;
+  font-family: Oswald;
+  border-radius: 5px;
 }
