@@ -108,6 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
         scoreBoard.style.display = 'none';
         timer.start();
       });
-    }, 0);
+    }, 5700);
   });
 });
