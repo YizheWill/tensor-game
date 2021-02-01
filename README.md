@@ -1,6 +1,6 @@
-# tensor-game
+# LEARNING ASL (tensorflow.js powered)
 
-[Demo](https://yizhewill.github.io/tensor-game/)
+## [Demo](https://yizhewill.github.io/tensor-game/)
 
 ### LEARNING_ASL is tensorflow.js powered web app for people to learn American Sign Language.
 
