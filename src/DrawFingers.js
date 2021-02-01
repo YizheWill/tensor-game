@@ -13,6 +13,7 @@ import {
 } from './A';
 class DrawFingers {
   constructor(width, height, fps, ctx, video, resultText) {
+    this.score = 0;
     this.width = width;
     this.height = height;
     this.fps = fps;
@@ -54,6 +55,8 @@ class DrawFingers {
       (char) => `./src/assets/images/${char}.png`
     );
     this.currentIndex = 0;
+    this.scoreContainer = document.querySelector('#score-number');
+    this.scoreContainer.innerHTML = this.score;
   }
 
   async genPredicts(video) {
@@ -75,7 +78,11 @@ class DrawFingers {
     const passed = document.querySelector('#passed');
     const nextButton = document.querySelector('#nextGesture');
     nextButton.addEventListener('click', () => {
-      this.currentIndex = parseInt(Math.random() * 9);
+      let newIndex = parseInt(Math.random() * 9);
+      while (newIndex === this.currentIndex) {
+        newIndex = parseInt(Math.random() * 9);
+      }
+      this.currentIndex = newIndex;
       gestureName.innerText = this.charArray[this.currentIndex].toUpperCase();
       image.src = this.imageArray[this.currentIndex];
       passed.innerText = ' ';
@@ -96,7 +103,9 @@ class DrawFingers {
         );
         this.resultText.innerText = result.name;
         if (result.name === gestureName.innerText) {
-          passed.innerText = 'passed';
+          passed.innerText = 'passed! Score +10';
+          this.score += 10;
+          this.scoreContainer.innerText = this.score;
           let newIndex = parseInt(Math.random() * 9);
 
           while (this.currentIndex === newIndex) {

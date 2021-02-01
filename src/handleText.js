@@ -6,12 +6,13 @@ const nextButton = document.getElementById('next');
 const policyText = document.getElementById('policy');
 const core = document.getElementById('core');
 policyText.style.display = 'none';
-nextButton.style.display = 'flex';
+nextButton.style.display = 'none';
 core.style.display = 'none';
 nextButton.addEventListener('click', () => {
   const modal = document.getElementById('modal');
   modal.style.display = 'none';
   core.style.display = 'flex';
+  document.querySelector('#cameraToggle').style.display = 'flex';
   document.getElementById('nextGesture').style.display = 'flex';
 });
 export default async function typeWriter() {
